@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-class HomeController extends BaseController
+final class HomeController extends BaseController
 {
     public function index(): void
     {
         $this->render('home', [
-            'pageTitle' => 'Home'
+            'pageTitle' => 'Home',
         ]);
     }
 }

@@ -12,7 +12,7 @@ final class Router
 
     public function dispatch(): void
     {
-        $route = trim((string) ($_GET['route'] ?? ''));
+        $route = trim((string) ($_GET['route'] ?? ''), '/');
 
         if (!array_key_exists($route, $this->routes)) {
             http_response_code(404);

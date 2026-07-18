@@ -11,9 +11,17 @@ final class View
         $pageFile = dirname(__DIR__) . '/pages/' . $page . '.php';
         $layoutFile = dirname(__DIR__) . '/layouts/' . $layout . '.php';
 
-        if (!is_file($pageFile) || !is_file($layoutFile)) {
-            throw new RuntimeException('View file not found.');
-        }
+        if (!is_file($pageFile)) {
+    throw new RuntimeException(
+        sprintf('Page view not found: %s', $pageFile)
+    );
+}
+
+if (!is_file($layoutFile)) {
+    throw new RuntimeException(
+        sprintf('Layout not found: %s', $layoutFile)
+    );
+}
 
         extract($data, EXTR_SKIP);
 
