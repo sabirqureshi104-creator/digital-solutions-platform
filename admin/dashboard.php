@@ -18,12 +18,13 @@ $user = Auth::user();
     <aside class="sidebar">
         <h2>DSP Admin</h2>
         <nav>
-            <a class="active" href="dashboard.php">Dashboard</a>
-            <a href="#">Services</a>
-            <a href="#">Products</a>
-            <a href="#">Projects</a>
-            <a href="#">Settings</a>
-        </nav>
+    <a class="active" href="dashboard.php">Dashboard</a>
+    <a href="#" aria-disabled="true">Enquiries</a>
+    <a href="#" aria-disabled="true">Quote Requests</a>
+    <a href="#" aria-disabled="true">Contacts</a>
+    <a href="#" aria-disabled="true">Users</a>
+    <a href="#" aria-disabled="true">Settings</a>
+</nav>
     </aside>
 
     <main class="dashboard">
@@ -36,11 +37,26 @@ $user = Auth::user();
         </header>
 
         <section class="stats">
-            <article><strong>0</strong><span>Services</span></article>
-            <article><strong>0</strong><span>Products</span></article>
-            <article><strong>0</strong><span>Projects</span></article>
-            <article><strong>0</strong><span>Messages</span></article>
-        </section>
+    <article>
+        <strong><?= $newEnquiries ?></strong>
+        <span>New enquiries</span>
+    </article>
+
+    <article>
+        <strong><?= $openQuotes ?></strong>
+        <span>Open quotes</span>
+    </article>
+
+    <article>
+        <strong><?= $contactCount ?></strong>
+        <span>Saved contacts</span>
+    </article>
+
+    <article>
+        <strong><?= $followUpsDue ?></strong>
+        <span>Follow-ups due</span>
+    </article>
+</section>
     </main>
 </div>
 </body>
