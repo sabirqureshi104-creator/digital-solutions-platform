@@ -1,1 +1,0 @@
-<?php class Password{public static function hash($p){return password_hash($p,PASSWORD_DEFAULT);} public static function verify($p,$h){return password_verify($p,$h);}}
