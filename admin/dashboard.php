@@ -4,6 +4,10 @@ declare(strict_types=1);
 require_once __DIR__ . '/includes/auth.php';
 
 $user = Auth::user();
+$newEnquiries = 0;
+$openQuotes = 0;
+$contactCount = 0;
+$followUpsDue = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
