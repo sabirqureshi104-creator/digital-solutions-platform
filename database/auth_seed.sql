@@ -1,0 +1,1 @@
+INSERT INTO users(email,password) VALUES('admin@example.com','$2y$10$exampleReplaceWithRealHash');

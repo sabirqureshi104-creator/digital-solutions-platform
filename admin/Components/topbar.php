@@ -1,0 +1,1 @@
+<?php // Topbar component
