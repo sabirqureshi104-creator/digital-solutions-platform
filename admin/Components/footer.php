@@ -1,1 +1,0 @@
-<?php // Footer component

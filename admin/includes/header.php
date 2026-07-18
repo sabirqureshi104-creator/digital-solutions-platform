@@ -1,1 +1,0 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Admin</title><link rel='stylesheet' href='assets/css/admin.css'></head><body><div class='admin-wrapper'><?php require __DIR__.'/sidebar.php'; ?><main class='content'>

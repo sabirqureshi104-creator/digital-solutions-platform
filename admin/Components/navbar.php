@@ -1,1 +1,0 @@
-<?php // Navbar component

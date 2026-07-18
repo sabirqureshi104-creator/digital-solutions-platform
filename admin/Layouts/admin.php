@@ -1,1 +1,0 @@
-<?php // Admin layout
