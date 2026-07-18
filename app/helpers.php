@@ -1,14 +1,16 @@
 <?php
 declare(strict_types=1);
 
-function config(string $key): mixed
-{
-    return defined("Config::$key") ? constant("Config::$key") : null;
-}
-
 function url(string $path = ''): string
 {
     return rtrim(Config::APP_URL, '/') . '/' . ltrim($path, '/');
+}
+
+function route_url(string $route = ''): string
+{
+    return $route === ''
+        ? url()
+        : url('?route=' . urlencode($route));
 }
 
 function asset(string $path): string
@@ -16,21 +18,25 @@ function asset(string $path): string
     return url('assets/' . ltrim($path, '/'));
 }
 
-function redirect(string $path): never
+function e(mixed $value): string
 {
-    header('Location: ' . url($path));
+    return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
+}
+
+function redirect(string $location): never
+{
+    header('Location: ' . $location);
     exit;
 }
 
-function dd(mixed $value): never
+function component(string $name, array $data = []): void
 {
-    echo '<pre>';
-    var_dump($value);
-    echo '</pre>';
-    exit;
-}
+    $file = dirname(__DIR__) . '/components/' . $name . '.php';
 
-function loadComponents(): void
-{
-    require_once __DIR__ . '/../components/component.php';
+    if (!is_file($file)) {
+        throw new RuntimeException("Component not found: {$name}");
+    }
+
+    extract($data, EXTR_SKIP);
+    require $file;
 }

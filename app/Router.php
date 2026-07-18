@@ -1,30 +1,31 @@
 <?php
 declare(strict_types=1);
 
-class Router
+final class Router
 {
     private array $routes = [];
 
-    public function get(string $uri, string $controller, string $method): void
+    public function get(string $route, string $controller, string $method): void
     {
-        $this->routes[$uri] = [$controller, $method];
+        $this->routes[$route] = [$controller, $method];
     }
 
     public function dispatch(): void
     {
-        $uri = '/' . trim($_GET['route'] ?? '', '/');
+        $route = trim((string) ($_GET['route'] ?? ''));
 
-        if ($uri === '//') {
-            $uri = '/';
-        }
-
-        if (!isset($this->routes[$uri])) {
-            View::render('404', ['pageTitle' => '404']);
+        if (!array_key_exists($route, $this->routes)) {
+            http_response_code(404);
+            View::render('404', ['pageTitle' => 'Page Not Found']);
             return;
         }
 
-        [$controller, $method] = $this->routes[$uri];
+        [$controller, $method] = $this->routes[$route];
 
-        (new $controller())->$method();
+        if (!class_exists($controller) || !method_exists($controller, $method)) {
+            throw new RuntimeException('Invalid route handler.');
+        }
+
+        (new $controller())->{$method}();
     }
 }

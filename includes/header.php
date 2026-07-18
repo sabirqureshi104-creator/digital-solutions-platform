@@ -20,12 +20,12 @@ declare(strict_types=1);
         </a>
 
         <nav>
-            <a href="<?= url() ?>">Home</a>
-            <a href="<?= url('?route=services') ?>">Services</a>
-            <a href="<?= url('?route=products') ?>">Products</a>
-            <a href="<?= url('?route=industries') ?>">Industries</a>
-            <a href="<?= url('?route=projects') ?>">Projects</a>
-            <a href="<?= url('?route=contact') ?>">Contact</a>
+           <a href="<?= route_url() ?>">Home</a>
+<a href="<?= route_url('services') ?>">Services</a>
+<a href="<?= route_url('products') ?>">Products</a>
+<a href="<?= route_url('industries') ?>">Industries</a>
+<a href="<?= route_url('projects') ?>">Projects</a>
+<a href="<?= route_url('contact') ?>">Contact</a>
         </nav>
 
     </div>

@@ -5,17 +5,13 @@ require_once __DIR__ . '/app/Config.php';
 require_once __DIR__ . '/app/helpers.php';
 require_once __DIR__ . '/app/autoload.php';
 
-loadComponents();
-
 $router = new Router();
 
-$router->get('/', HomeController::class, 'index');
-
-// Temporary routes
-$router->get('/services', HomeController::class, 'index');
-$router->get('/products', HomeController::class, 'index');
-$router->get('/industries', HomeController::class, 'index');
-$router->get('/projects', HomeController::class, 'index');
-$router->get('/contact', HomeController::class, 'index');
+$router->get('', HomeController::class, 'index');
+$router->get('services', ServicesController::class, 'index');
+$router->get('products', ProductsController::class, 'index');
+$router->get('industries', IndustriesController::class, 'index');
+$router->get('projects', ProjectsController::class, 'index');
+$router->get('contact', ContactController::class, 'index');
 
 $router->dispatch();

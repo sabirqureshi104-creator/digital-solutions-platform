@@ -3,6 +3,15 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/includes/bootstrap.php';
 
+$count = (int) Database::connection()
+    ->query('SELECT COUNT(*) FROM users')
+    ->fetchColumn();
+
+if ($count > 0) {
+    http_response_code(403);
+    exit('Admin setup is already complete.');
+}
+
 $message = '';
 $error = '';
 
